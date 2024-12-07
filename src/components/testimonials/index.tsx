@@ -19,7 +19,7 @@ export default function Testiomnials() {
                 <Carousel />
             </div>
             <div className="flex flex-col text-center items-center justify-center gap-8 bg-slate-100 h-96">
-                <h2 className="font-bold text-[#007654]">Dpercaya oleh Koperasi di seluruh Indonesia</h2>
+                <h2 className="font-bold text-[#007654]">Dipercaya oleh Koperasi di seluruh Indonesia</h2>
                 <div className="flex justifiy-around gap-8 items-center">
                     {clientImange.map((item, index) => (
                         <div key={index}>{item}</div>
