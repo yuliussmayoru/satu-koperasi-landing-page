@@ -8,14 +8,13 @@ export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="flex items-center justify-between md:pr-8 md:pl-8 lg:justify-around p-4 bg-[#007654] text-white relative w-full z-10 top-0 sticky">
+        <div className="flex items-center justify-between md:pr-8 md:pl-8 lg:justify-around p-4 bg-[#007654] text-white relative w-full z-30 top-0 sticky">
             <h1>KopEasy.com</h1>
 
             <ul className="lg:gap-24 hidden md:hidden lg:flex">
                 <li>Home</li>
                 <li>Services</li>
                 <li>Features</li>
-                <li>About</li>
                 <li>Pricing</li>
                 <li>Testimonials</li>
                 <li>Blog</li>
@@ -29,6 +28,8 @@ export default function NavBar() {
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="ml-4 hover:bg-green-600 p-2 rounded lg:hidden"
+                    aria-label="Open Menu"
+                    id="openMenu"
                 >
                     <Bars3Icon className="w-6 h-6 font-bold" />
                 </button>
@@ -46,6 +47,8 @@ export default function NavBar() {
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="mt-2"
+                            aria-label="Close Menu"
+                            id="closeMenu"
                         >
                             <XMarkIcon className="w-8 h-8 font-bold" />
                         </button>
@@ -55,9 +58,6 @@ export default function NavBar() {
                         <li className="border-b border-[#007654] pb-4">Services</li>
                         <li className="border-b border-[#007654] pb-4">
                             Features
-                        </li>
-                        <li className="border-b border-[#007654] pb-4">
-                            About
                         </li>
                         <li className="border-b border-[#007654] pb-4">Pricing</li>
                         <li className="border-b border-[#007654] pb-4">Testimonials</li>

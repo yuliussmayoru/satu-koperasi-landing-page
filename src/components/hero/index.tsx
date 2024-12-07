@@ -14,19 +14,19 @@ export default function Hero() {
                         <button className="mt-6 w-1/2 md:w-1/3 text-sm bg-[#007654] text-white border hover:border-gray-100 hover:text-[#007654] px-6 py-2 rounded hover:bg-gray-100">
                             Free Demo
                         </button>
-                        <button className="mt-6 w-1/2 md:w-1/3 text-sm bg-white text-[#007654] px-6 py-2 rounded hover:bg-gray-100 hover:text-white hover:bg-[#007654] hover: border hover:border-white">
+                        <button className="mt-6 w-1/2 md:w-1/3 text-sm bg-white text-[#007654] px-6 py-2 rounded hover:bg-[#007654] hover:text-white hover:bg-[#007654] hover: border hover:border-white">
                             Get Started
                         </button>
                     </div>
                 </div>
                 <div className="relative">
                     <img
-                        src="/img/laptop.png"
+                        src="/img/laptop.webp"
                         alt="Laptop"
                         className="w-full relative z-10"
                     />
                     <img
-                        src="/img/dashboard-landing.png"
+                        src="/img/dashboard-landing.webp"
                         alt="Dashboard"
                         className="absolute top-[5%] left-[12%] w-[76%] md:w-[50%] lg:top-[4%] z-0 md:w-[76%] md:top-[4%]"
                     />

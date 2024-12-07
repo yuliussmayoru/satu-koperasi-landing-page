@@ -1,5 +1,8 @@
 import React from "react";
 import { ServicesCard } from "./servicesCard";
+import Link from "next/link";
+import { ArrowRightIcon, ChartBarIcon, CreditCardIcon, UserGroupIcon, UsersIcon } from "@heroicons/react/16/solid";
+import ServicesList from "./servicesList";
 
 export default function ServicesSection() {
     return (
@@ -59,6 +62,49 @@ export default function ServicesSection() {
                         title="Integrasi Pembayaran Digital"
                         description="Permudah transaksi dengan anggota dan pelanggan melalui integrasi dengan payment gateway atau e-wallet."
                     />
+                </div>
+                <div className="grid justify-items-stretch grid-cols-1 lg:grid-cols-2 gap-8 pt-40 md:pr-20 md:pl-20 lg:pr-40 lg:pl-40">
+                    <div className="justify-self-center">
+                        <img src="/img/emang-emang.webp" alt="servicewoman" className="w-[50vh] rounded-xl" />
+                    </div>
+                    
+                    <div className="">
+                        <div className="">
+                            <div className="flex flex-col gap-4 border-b border-[#78b6a4] pb-8">
+                                <p className="font-bold text-[#007654]">Fokus pada Pemberdayaan Koperasi</p>
+                                <p className="text-4xl">Capai Keunggulan Pengelolaan Melalui Metodologi Kami</p>
+                                <Link href="/" className="flex items-center gap-2">Pelajari Lebih lanjut <ArrowRightIcon className="w-4 h-4" /></Link>
+                            </div>
+                            <div className="flex flex-col gap-4 pt-8">
+                                <ServicesList
+                                    title="Sederhanakan Manajemen Koperasi"
+                                    description="Berdayakan koperasi Anda dengan alat untuk mengelola keanggotaan, catatan keuangan, dan operasional secara efisien. Dapatkan wawasan real-time untuk pengambilan keputusan yang lebih baik."
+                                >
+                                    <UserGroupIcon className="w-8 h-8 text-[#007654]" />
+                                </ServicesList>
+                                <ServicesList
+                                    title="Perencanaan Keuangan yang Lebih Mudah"
+                                    description="Capai kejelasan keuangan dengan pencatatan otomatis, pelacakan pinjaman, dan pengelolaan simpanan. Pastikan transparansi dan kepercayaan di antara anggota."
+                                >
+                                        <CreditCardIcon className="w-8 h-8 text-[#007654]" />
+                                </ServicesList>
+                                
+                                <ServicesList
+                                    title="Optimalkan Keterlibatan Anggota"
+                                    description="Tingkatkan partisipasi anggota dengan fitur untuk pengumuman, voting, dan komunikasi yang mudah di seluruh level koperasi."
+                                >
+                                    <UsersIcon className="w-8 h-8 text-[#007654]" />
+                                </ServicesList>
+                                
+                                <ServicesList
+                                    title="Digitalisasi Operasional Koperasi"
+                                    description="Automasi berbagai proses administrasi, mulai dari pencatatan transaksi hingga laporan tahunan, sehingga menghemat waktu dan tenaga."
+                                >
+                                    <ChartBarIcon className="w-8 h-8 text-[#007654]" />
+                                </ServicesList>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
