@@ -22,14 +22,16 @@ const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
     const { isOpen } = useAdminPanel();
   
     return (
-      <div
-        className={`transition-all duration-300 ${
-          isOpen ? "ml-64" : "ml-0 lg:ml-16"
-        } flex-grow bg-gray-100`}
-      >
-        <TopBar />
-        <main className="p-4">{children}</main>
-      </div>
+    <AdminPanelProvider>
+        <div
+            className={`transition-all duration-300 ${
+            isOpen ? "ml-64" : "ml-0 lg:ml-16"
+            } flex-grow bg-gray-100`}
+        >
+            <TopBar />
+            <main className="p-4">{children}</main>
+        </div>
+    </AdminPanelProvider>
     );
   };
   
