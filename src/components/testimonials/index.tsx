@@ -11,20 +11,24 @@ export default function Testiomnials() {
     ]
     return (
         <div className="mb-8">
-            <div className="flex flex-col text-center items-center gap-8">
+            <div className="flex flex-col text-center items-center gap-8 p-12">
                 <h2 className="font-bold text-[#007654]">Client Kami</h2>
                 <p className="text-3xl">Apa Kata Pengguna Kami?</p>
             </div>
             <div className="mt-8 mb-8">
                 <Carousel />
             </div>
-            <div className="flex flex-col text-center items-center justify-center gap-8 bg-slate-100 h-96">
-                <h2 className="font-bold text-[#007654]">Dipercaya oleh Koperasi di seluruh Indonesia</h2>
-                <div className="flex justifiy-around gap-8 items-center">
-                    {clientImange.map((item, index) => (
-                        <div key={index}>{item}</div>
-                    ))}
+            <div>
+            <div className=" bg-slate-100">
+                <div className="flex flex-col text-center items-center justify-center gap-8 p-12">
+                    <h2 className="font-bold text-[#007654]">Dipercaya oleh Koperasi di seluruh Indonesia</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+                        {clientImange.map((item, index) => (
+                            <div key={index} className="flex items-center justify-center p-4">{item}</div>
+                        ))}
+                    </div>
                 </div>
+            </div>
             </div>
         </div>
     )

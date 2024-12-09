@@ -14,6 +14,7 @@ export default function Features() {
                         layout="fill"
                         objectFit="cover"
                         objectPosition="center"
+                        className="bg-scroll"
                     />
 
                     <div className="absolute inset-0 bg-[#007654] bg-opacity-60"></div>

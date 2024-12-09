@@ -1,4 +1,7 @@
+import Blog from "@/components/blog";
+import ContactUs from "@/components/contactUs";
 import Features from "@/components/features";
+import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import NavBar from "@/components/navBar";
 import Pricing from "@/components/pricing";
@@ -15,6 +18,9 @@ export default function Home() {
       <Features />
       <Pricing />
       <Testiomnials />
+      <Blog />
+      <ContactUs />
+      <Footer />
     </div>
   );
 }
