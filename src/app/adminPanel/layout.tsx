@@ -20,9 +20,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
 const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
     const { isOpen } = useAdminPanel();
-  
     return (
-    <AdminPanelProvider>
         <div
             className={`transition-all duration-300 ${
             isOpen ? "ml-64" : "ml-0 lg:ml-16"
@@ -31,7 +29,6 @@ const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
             <TopBar />
             <main className="p-4">{children}</main>
         </div>
-    </AdminPanelProvider>
     );
   };
   

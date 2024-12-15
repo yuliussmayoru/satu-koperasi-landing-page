@@ -6,11 +6,11 @@ export function SideMenuList(props: SideMenuListProps) {
   const { href, children, icon, iconClassName, isExpanded } = props;
 
   return (
-    <li>
+    <li className="w-full hover:bg-green-600 hover:rounded hover:rounded-full">
       <Link
         href={href}
         className={twMerge(
-          "flex items-center p-2 w-full text-white hover:bg-green-600",
+          "flex items-center p-2 w-full gap-4",
           isExpanded ? "pl-8" : "justify-center"
         )}
       >

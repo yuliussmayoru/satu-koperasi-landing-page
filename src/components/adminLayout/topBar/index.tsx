@@ -14,16 +14,14 @@ export function TopBar() {
         router.push("/login");
     }
     return (
-        <div className="flex justify-between items-center bg-green-500 text-white p-4">
+        <div className="flex justify-between items-center bg-[#007654] text-white p-4">
             <button
                 onClick={toggleMenu}
                 className="p-2 rounded-md hover:bg-green-600 transition"
             >
-                <Bars3Icon className="w-6 h-6"/>
+                <Bars3Icon className="w-6 h-6 lg:hidden"/>
             </button>
-           
-            <h1 className="hidden">Admin Dashboard</h1>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 p-2">
                 <h2>Admin Name</h2>
                 <button
                     onClick={handleLogout}

@@ -3,6 +3,7 @@
 import { HomeIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useAdminPanel } from "@/context/adminPanelContext";
 import { SideMenuList } from "../sideMenuList";
+import { Bars3Icon } from "@heroicons/react/16/solid";
 
 export function SideMenu() {
   const { isOpen, toggleMenu } = useAdminPanel();
@@ -11,18 +12,18 @@ export function SideMenu() {
     <>
       {/* Side Menu */}
       <div
-        className={`fixed top-0 left-0 h-full bg-green-500 text-white transition-all duration-300 z-50 ${
+        className={`fixed top-0 left-0 h-full bg-[#007654] text-white transition-all duration-300 z-50 ${
           isOpen ? "w-64" : "w-0 lg:w-16"
         } overflow-hidden flex flex-col`}
       >
         {/* Logo and Close Button */}
         <div
-          className={`flex items-center justify-between p-4 bg-green-600 transition-opacity duration-300 ${
+          className={`flex items-center justify-between p-4 bg-[#007654] transition-opacity duration-300  ${
             isOpen || "lg:justify-center"
           }`}
         >
           <h1
-            className={`text-lg font-bold transition-transform duration-300 ${
+            className={`text-lg font-bold transition-transform duration-300 h-6 ${
               isOpen ? "translate-x-0" : "-translate-x-10 lg:hidden"
             }`}
           >
@@ -32,7 +33,8 @@ export function SideMenu() {
             onClick={toggleMenu}
             className="p-2 rounded-md hover:bg-green-700 transition"
           >
-            <XMarkIcon className="h-6 w-6" />
+            <XMarkIcon className="h-6 w-6 lg:hidden" />
+            <Bars3Icon className="w-6 h-6 hidden lg:block"/>
           </button>
         </div>
 
@@ -48,7 +50,7 @@ export function SideMenu() {
             iconClassName="text-yellow-300"
             isExpanded={isOpen}
           >
-            Dashboard
+            Homepage Management
           </SideMenuList>
           {/* Add more items here */}
         </ul>
