@@ -1,15 +1,45 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { dummyTestimonials } from "../api/dummyTestimonials";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/16/solid";
+import axiosClient, { baseURL } from "@/api/axiosClient";
+import { Testimonial } from "../type";
 
 export default function Carousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [itemsToShow, setItemsToShow] = useState(1); // Default to 1 item for server-side rendering
     const autoMoveInterval = 5000; // Auto-move every 5 seconds
+    const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+    //console.log(`ini data akhir testimonials ${JSON.stringify(testimonials)}`);
 
-    const testimonials = dummyTestimonials;
+    const fetchTestimonials = async () => {
+        try {
+            const response = await axiosClient.get("api/testimonials?populate=avatar")
+            const data = response.data
+            // console.log(`ini data testimonal ${JSON.stringify(data)}`)
+            const formattedTestimonials = data.map((item: any) => ({
+                id: item.id,
+                Name: item.Name,
+                Message: item.Message,
+                Role: item.Role,
+                avatar: {
+                    url: item.avatar?.url
+                    ? `${baseURL}${item.avatar.url}`
+                    : "/img/face/avatar.png",
+                }
+            }))
+
+
+            // console.log(`ini isi formattedTestimonials ${JSON.stringify(formattedTestimonials)}`)
+            setTestimonials(formattedTestimonials)
+        } catch (error) {
+            console.log("failed to fetch testimonials")
+        }
+    }
+
+    useEffect(() => {
+        fetchTestimonials()
+    }, []);
 
     const updateItemsToShow = () => {
         const screenWidth = window.innerWidth;
@@ -29,22 +59,29 @@ export default function Carousel() {
     }, []);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            nextSlide(); // Automatically move to the next slide
-        }, autoMoveInterval);
-
-        return () => clearInterval(interval); // Clear interval on unmount
-    }, [currentIndex]);
+        if (testimonials.length > 0) { // Only start the interval if there are testimonials
+            const interval = setInterval(() => {
+                nextSlide();
+            }, autoMoveInterval);
+    
+            return () => clearInterval(interval);
+        }
+    }, [currentIndex, testimonials]);
+    
 
 
     const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+        if (testimonials.length > 0) {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+        }
     };
-
+    
     const prevSlide = () => {
-        setCurrentIndex((prevIndex) =>
-            (prevIndex - 1 + testimonials.length) % testimonials.length
-        );
+        if (testimonials.length > 0) {
+            setCurrentIndex((prevIndex) => 
+                (prevIndex - 1 + testimonials.length) % testimonials.length
+            );
+        }
     };
 
     return (
@@ -58,26 +95,25 @@ export default function Carousel() {
                 >
                     {testimonials.map((item, i) => (
                         <div
-                            key={i}
+                            key={item.id}
                             id="carouselCard"
                             className={`flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-2`} // Gap restored with `px-2`
                         >
                             <div className="w-full flex flex-col gap-2 border border-gray-200 rounded-lg p-4 shadow-xl">
-                                <p>{item.title}</p>
-                                <p>{item.description}</p>
+                                <p className="line-clamp-4">{item.Message}</p>
                                 <div className="flex gap-4">
-                                    <div className="w-24 h-24 rounded-full overflow-hidden bg-slate-400">
+                                    <div className="w-16 h-16 rounded-full overflow-hidden bg-slate-400">
                                         <img
-                                            src={item.imgSrc}
-                                            alt={item.alt}
+                                            src={item.avatar.url}
+                                            alt={item.Name}
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
                                     <div className="flex flex-col gap-2 justify-center">
                                         <p className="font-bold text-lg text-[#007654]">
-                                            {item.clientName}
+                                            {item.Name}
                                         </p>
-                                        <p className="text-sm font-bold">{item.clientJob}</p>
+                                        <p className="text-sm font-bold">{item.Role}</p>
                                     </div>
                                 </div>
                             </div>

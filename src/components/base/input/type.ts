@@ -8,4 +8,5 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
     inputClassName?: string
     rightNode?: React.ReactNode
     rightNodeClick?: () => void
+    control?: any
 }

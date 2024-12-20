@@ -1,0 +1,168 @@
+{
+    "hero": {
+      "title": "Welcome to Our Amazing Service",
+      "subtitle": "We offer everything you need to grow your business"
+    },
+    "features": {
+      "title": "Our Features",
+      "subtitle": "Explore the features that make us stand out",
+      "list": [
+        {
+          "id": "e1c0589b-57e5-4a73-8152-f198b79c1ac6",
+          "title": "Feature 1",
+          "description": "This is feature 1"
+        },
+        {
+          "id": "86d5f623-c7d3-4461-aba3-e7ee2c42554f",
+          "title": "Feature 2",
+          "description": "This is feature 2"
+        },
+        {
+          "id": "ba3de6fc-3304-42ad-9ee5-2090e3495916",
+          "title": "Feature 3",
+          "description": "This is feature 3"
+        }
+      ]
+    },
+    "pricing": {
+      "monthly": {
+        "standard": {
+          "price": "250000",
+          "features": {
+            "Fitur 1": true,
+            "Fitur 2": true,
+            "Fitur 3": false,
+            "Fitur 4": true,
+            "Fitur 5": false
+          }
+        },
+        "premium": {
+          "price": "500000",
+          "features": {
+            "Fitur 1": true,
+            "Fitur 2": true,
+            "Fitur 3": true,
+            "Fitur 4": true,
+            "Fitur 5": true
+          }
+        },
+        "enterprise": {
+          "price": "1000000",
+          "features": {
+            "Fitur 1": true,
+            "Fitur 2": true,
+            "Fitur 3": true,
+            "Fitur 4": true,
+            "Fitur 5": true
+          }
+        }
+      },
+      "annual": {
+        "standard": {
+          "price": "2400000",
+          "features": {
+            "Fitur 1": true,
+            "Fitur 2": true,
+            "Fitur 3": false,
+            "Fitur 4": true,
+            "Fitur 5": false
+          }
+        },
+        "premium": {
+          "price": "4800000",
+          "features": {
+            "Fitur 1": true,
+            "Fitur 2": true,
+            "Fitur 3": true,
+            "Fitur 4": true,
+            "Fitur 5": true
+          }
+        },
+        "enterprise": {
+          "price": "9600000",
+          "features": {
+            "Fitur 1": true,
+            "Fitur 2": true,
+            "Fitur 3": true,
+            "Fitur 4": true,
+            "Fitur 5": true
+          }
+        }
+      }
+    },
+    "testimonials": [
+      {
+        "id": "ccf045b7-789a-4046-9d54-d5f863d036b5",
+        "name": "John Doe",
+        "role": "CEO of Company",
+        "message": "This service is amazing and helped our business grow."
+      },
+      {
+        "id": "f6c38cf3-3b2f-4179-986b-9ad9c5c7834f",
+        "name": "Jane Smith",
+        "role": "CTO of Startup",
+        "message": "Very reliable and easy to use!"
+      }
+    ],
+    "partners": [
+      {
+        "id": "09d5a89b-c96e-419f-b859-0d86dbdf18c3",
+        "logoUrl": "https://example.com/logo1.png"
+      },
+      {
+        "id": "9211dea5-8ac8-4e92-89ab-daf62b2b2703",
+        "logoUrl": "https://example.com/logo2.png"
+      },
+      {
+        "id": "454425aa-c415-45f7-bafa-cd67a18bbf41",
+        "logoUrl": "https://example.com/logo3.png"
+      }
+    ],
+    "contacts": {
+      "email": "info@example.com",
+      "phone": "+1234567890",
+      "address": "123 Street, City, Country"
+    },
+    "roles": [
+      {
+        "id": "5aa71c81-2252-4a18-afdc-f7df034703b8",
+        "name": "admin"
+      },
+      {
+        "id": "197f4fe4-2eee-45d5-8134-1dec67ea199a",
+        "name": "author"
+      }
+    ],
+    "users": [
+      {
+        "id": "b47498aa-7373-4a42-9985-a45cb442a915",
+        "email": "admin@example.com",
+        "password": "password123",
+        "name": "Admin User",
+        "role": "admin"
+      },
+      {
+        "id": "233161fc-66dc-4d13-a3d2-efc3db3064d9",
+        "email": "author@example.com",
+        "password": "password123",
+        "name": "Author User",
+        "role": "author"
+      }
+    ],
+    "blogs": [
+      {
+        "id": "059b0c8f-e696-4907-8ae2-8aa5b8db0a3a",
+        "title": "How to Start a Business",
+        "content": "This is the content of the blog post.",
+        "author": "Admin User",
+        "createdAt": "2024-05-01"
+      },
+      {
+        "id": "f3374a47-af4a-473a-b3e4-7757ca2ba7b5",
+        "title": "Top Features of Our Platform",
+        "content": "Explore the top features of our amazing platform.",
+        "author": "Author User",
+        "createdAt": "2024-05-05"
+      }
+    ]
+  }
