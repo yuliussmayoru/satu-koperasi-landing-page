@@ -1,30 +1,77 @@
+import axiosClient, { baseURL } from "@/api/axiosClient";
 import Carousel from "./carousel";
 
-export default function Testiomnials() {
-    const clientImange = [
-        <img src="/img/companyLogo/1.webp" alt="logo1" className="w-40 m-2"/>,
-        <img src="/img/companyLogo/2.webp" alt="logo2" className="w-40 m-2"/>,
-        <img src="/img/companyLogo/3.webp" alt="logo3" className="w-40 m-2"/>,
-        <img src="/img/companyLogo/4.webp" alt="logo4" className="w-40 m-2"/>,
-        <img src="/img/companyLogo/5.webp" alt="logo5" className="w-40 m-2"/>,
-        <img src="/img/companyLogo/6.webp" alt="logo6" className="w-40 m-2"/>,
+type Partner = {
+    id: string
+    Name: string
+    logoUrl: {
+        url: string
+    }
+}
+
+type PartnerResponse = {
+    data: [
+        id: number,
+        attributes: {
+            Name: string;
+            logoUrl: {
+                data: {
+                    url: string
+                }
+            }
+        }
     ]
+}
+
+async function fetchPartners(): Promise<Partner[]> {
+    try {
+      const response = await axiosClient.get("api/partner-names?populate=logoUrl") as PartnerResponse;
+      const partnersData = response.data;
+      //console.log (`ini isi dari partnersData ${JSON.stringify(partnersData)}`)
+  
+      // Map the response to extract required fields
+      return partnersData?.map((partner: any) => ({
+        id: partner.id,
+        Name: partner.Name,
+        logoUrl: {
+          url: partner.logoUrl?.url || "/img/placeholder-logo.png", // Fallback to placeholder if logoUrl is missing
+        },
+      }));
+    } catch (error) {
+      console.error("Failed to fetch partners data:", error);
+      return []; // Return an empty array on error
+    }
+  }
+
+export default async function Testiomnials() {
+    const partners = await fetchPartners()
+
     return (
         <div className="mb-8">
-            <div className="flex flex-col text-center items-center gap-8">
+            <div className="flex flex-col text-center items-center gap-8 p-12">
                 <h2 className="font-bold text-[#007654]">Client Kami</h2>
                 <p className="text-3xl">Apa Kata Pengguna Kami?</p>
             </div>
             <div className="mt-8 mb-8">
                 <Carousel />
             </div>
-            <div className="flex flex-col text-center items-center justify-center gap-8 bg-slate-100 h-96">
-                <h2 className="font-bold text-[#007654]">Dpercaya oleh Koperasi di seluruh Indonesia</h2>
-                <div className="flex justifiy-around gap-8 items-center">
-                    {clientImange.map((item, index) => (
-                        <div key={index}>{item}</div>
-                    ))}
+            <div>
+            <div className=" bg-slate-100">
+                <div className="flex flex-col text-center items-center justify-center gap-8 p-12">
+                    <h2 className="font-bold text-[#007654]">Dipercaya oleh Koperasi di seluruh Indonesia</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+                    {partners.map((partner, i) => (
+                        <div key={i} className="flex items-center justify-center p-4">
+                            <img
+                            src={`${baseURL}${partner.logoUrl.url}`}
+                            alt="logo images"
+                            className="w-40 m-2"
+                            />
+                        </div>
+                        ))}
+                    </div>
                 </div>
+            </div>
             </div>
         </div>
     )

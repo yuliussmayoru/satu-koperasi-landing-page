@@ -1,16 +1,74 @@
 "use client";
 
-import React, { useState } from "react";
-import { dummyFeatures } from "./dummy";
+import React, { useEffect, useState } from "react";
 import PricingCard from "./priceCard";
+import axiosClient from "@/api/axiosClient";
+import { PricingPlan, PricingResponse } from "./type";
 
 export default function Pricing() {
-  const [activePlan, setActivePlan] = useState("MONTHLY");
+  const [activePlan, setActivePlan] = useState<keyof PricingResponse["data"]>("Monthly");
+  const [plans, setPlans] = useState<PricingPlan[]>([]); // Ensure this is declared properly
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  // Filter data based on activePlan
-  const activeFeatures = dummyFeatures.find(
-    (plan) => plan.subscriptionType === activePlan
-  )?.data;
+  useEffect(() => {
+    const fetchPricing = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await axiosClient.get("api/pricing") as PricingResponse;
+        //console.log(`ini data pricing raw: ${JSON.stringify(response)}`);
+
+        const pricingData = response.data;
+        //console.log(`ini data pricingData : ${pricingData}`);
+
+        const activePlanData = pricingData[activePlan];
+        //console.log(`ini isi activePlanData : ${activePlanData}`);
+
+        // Transform API data into flat array using for...in
+        const transformedData: PricingPlan[] = [];
+
+        for (const key in activePlanData) {
+          if (activePlanData.hasOwnProperty(key)) {
+            const value = activePlanData[key];
+            const featuresArray = [];
+
+            for (const name in value?.features) {
+              if (value.features.hasOwnProperty(name)) {
+                featuresArray.push({
+                  name,
+                  isActive: Boolean(value.features[name]),
+                });
+              }
+            }
+
+            transformedData.push({
+              title: key,
+              price: value?.price,
+              features: featuresArray,
+            });
+          }
+        }
+
+        //console.log(`ini data transformedData ${JSON.stringify(transformedData)}`);
+
+        setPlans(transformedData);
+      } catch (err) {
+        setError("Failed to fetch pricing data");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPricing();
+  }, [activePlan]);
+
+  //console.log(`ini data activePlan ${activePlan}`);
+
+  if (error) {
+    return <p className="text-red-500">{error}</p>;
+  }
 
   return (
     <div className="flex flex-col items-center text-center pb-12">
@@ -23,21 +81,21 @@ export default function Pricing() {
         <div className="flex border border-[#007654] w-52 rounded-md">
           <button
             className={`p-2 w-1/2 ${
-              activePlan === "MONTHLY"
+              activePlan === "Monthly"
                 ? "bg-[#007654] text-white"
                 : "bg-white text-[#007654]"
             } rounded-l-md`}
-            onClick={() => setActivePlan("MONTHLY")}
+            onClick={() => setActivePlan("Monthly")}
           >
             MONTHLY
           </button>
           <button
             className={`p-2 w-1/2 ${
-              activePlan === "ANNUALY"
+              activePlan === "Annual"
                 ? "bg-[#007654] text-white"
                 : "bg-white text-[#007654]"
             } rounded-r-md`}
-            onClick={() => setActivePlan("ANNUALY")}
+            onClick={() => setActivePlan("Annual")}
           >
             ANNUAL
           </button>
@@ -52,12 +110,12 @@ export default function Pricing() {
         id="price-card"
         className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8"
       >
-        {activeFeatures?.map((feature, index) => (
+        {plans.map((plan, index) => (
           <PricingCard
             key={index}
-            title={feature.title}
-            price={feature.price}
-            features={feature.features}
+            title={plan.title}
+            price={plan.price}
+            features={plan.features}
           />
         ))}
       </div>

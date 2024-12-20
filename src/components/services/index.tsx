@@ -65,7 +65,7 @@ export default function ServicesSection() {
                 </div>
                 <div className="grid justify-items-stretch grid-cols-1 lg:grid-cols-2 gap-8 pt-40 md:pr-20 md:pl-20 lg:pr-40 lg:pl-40">
                     <div className="justify-self-center">
-                        <img src="/img/emang-emang.webp" alt="servicewoman" className="w-[50vh] rounded-xl" />
+                        <img src="/img/emang-emang.webp" alt="servicewoman" className="w-[50vh] rounded-xl shadow-xl" />
                     </div>
                     
                     <div className="">

@@ -9,7 +9,7 @@ export default function NavBar() {
 
     return (
         <div className="flex items-center justify-between md:pr-8 md:pl-8 lg:justify-around p-4 bg-[#007654] text-white relative w-full z-30 top-0 sticky">
-            <h1>KopEasy.com</h1>
+            <h1>Koperasi Satu</h1>
 
             <ul className="lg:gap-24 hidden md:hidden lg:flex">
                 <li>Home</li>
@@ -43,7 +43,7 @@ export default function NavBar() {
             >
                 <div>
                     <div className="flex justify-between items-center gap-14">
-                        <h1 className="font-bold text-2xl">KopEasy.com</h1>
+                        <h1 className="font-bold text-2xl">Koperasi Satu</h1>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="mt-2"
