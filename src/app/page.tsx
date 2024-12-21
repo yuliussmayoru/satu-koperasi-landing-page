@@ -1,12 +1,13 @@
-import Blog from "@/components/blog";
-import ContactUs from "@/components/contactUs";
-import Features from "@/components/features";
-import Footer from "@/components/footer";
-import Hero from "@/components/hero";
-import NavBar from "@/components/navBar";
-import Pricing from "@/components/pricing";
-import ServicesSection from "@/components/services";
-import Testiomnials from "@/components/testimonials";
+import { Blog,
+        ContactUs,
+        Features,
+        Footer,
+        Hero,
+        NavBar,
+        Pricing,
+        ServicesSection,
+        Testiomnials
+      } from "sections";
 
 
 export default function Home() {
