@@ -1,26 +1,22 @@
+import axiosClient from "api/axiosClient";
+import {BlogCardData} from "../type";
 
-export const BlogCardData = [{
-    imgSrc: "/img/background-feature.jpg",
-    alt: "fitur1",
-    blogTitle: "Fitur 1",
-    blogDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-    authorImgSrc: "/img/face/1.webp",
-    authorName: "John Doe",
-    blogDate: "Agustus 2"
-},{
-    imgSrc: "/img/background-feature.jpg",
-    alt: "fitur2",
-    blogTitle: "Fitur 2",
-    blogDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-    authorImgSrc: "/img/face/1.webp",
-    authorName: "John Doe",
-    blogDate: "Agustus 2"
-},{
-    imgSrc: "/img/background-feature.jpg",
-    alt: "fitur3",
-    blogTitle: "Fitur 3",
-    blogDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-    authorImgSrc: "/img/face/1.webp",
-    authorName: "John Doe",
-    blogDate: "Agustus 2"
-}]
+export async function fetchBlogCards(): Promise<BlogCardData[]> {
+    try {
+        const response = await axiosClient.get("/api/articles?populate=*");
+        const articles = response.data.data.slice(0, 3).map((item: any) => ({
+            imgSrc: item.cover.formats.thumbnail.url,
+            alt: item.cover.alternativeText || item.title,
+            blogTitle: item.title,
+            blogDescription: item.description,
+            authorName: item.author.name,
+            blogDate: new Date(item.createdAt).toLocaleDateString(),
+            slug: item.slug,
+        }));
+
+        return articles;
+    } catch (error) {
+        console.error("Error fetching blog data:", error);
+        return []; // Return empty array if fetching fails
+    }
+}

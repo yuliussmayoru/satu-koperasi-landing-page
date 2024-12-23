@@ -8,7 +8,7 @@ export async function Hero() {
         <div className="relative text-white" id="hero-section">
             {/* Content */}
             <div className="bg-[#007654] relative z-0 flex flex-col items-center justify-center text-center px-4">
-                <div className="max-w-3xl p-4 m-4 md:p-8 md:p-12">
+                <div className="max-w-3xl p-4 m-4 md:p-8 lg:p-12">
                     <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold">
                         {heroData.title}
                     </h1>

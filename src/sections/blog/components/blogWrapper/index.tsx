@@ -1,4 +1,5 @@
 import { BlogCard } from "sections";
+import Link from "next/link";
 
 
 export function Blog() {
@@ -10,6 +11,9 @@ export function Blog() {
             </div>
             <div>
                 <BlogCard />
+                <div className="flex justify-center">
+                    <Link href="/" className="font-bold text-2xl border-b border-b-black">Blog Kami</Link>
+                </div>
             </div>
         </div>
     )

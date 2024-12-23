@@ -1,39 +1,19 @@
 
 import axiosClient, { baseURL } from "api/axiosClient";
-import { Carousel } from "sections";
+import {Carousel, Partner, PartnerResponse} from "sections";
 
-type Partner = {
-    id: string
-    Name: string
-    logoUrl: {
-        url: string
-    }
-}
 
-type PartnerResponse = {
-    data: [
-        id: number,
-        attributes: {
-            Name: string;
-            logoUrl: {
-                data: {
-                    url: string
-                }
-            }
-        }
-    ]
-}
 
 async function fetchPartners(): Promise<Partner[]> {
     try {
-      const response = await axiosClient.get("api/partner-names?populate=logoUrl") as PartnerResponse;
+      const response = await axiosClient.get("api/partners?populate=logoUrl") as PartnerResponse;
       const partnersData = response.data;
-      //console.log (`ini isi dari partnersData ${JSON.stringify(partnersData)}`)
+      console.log (`ini isi dari partnersData ${JSON.stringify(partnersData)}`)
   
       // Map the response to extract required fields
       return partnersData?.map((partner: any) => ({
         id: partner.id,
-        Name: partner.Name,
+        name: partner.name,
         logoUrl: {
           url: partner.logoUrl?.url || "/img/placeholder-logo.png", // Fallback to placeholder if logoUrl is missing
         },
@@ -44,7 +24,7 @@ async function fetchPartners(): Promise<Partner[]> {
     }
   }
 
-export async function Testiomnials() {
+export async function Testimonials() {
     const partners = await fetchPartners()
 
     return (

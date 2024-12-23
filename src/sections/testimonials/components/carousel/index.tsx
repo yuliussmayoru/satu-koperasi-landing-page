@@ -14,21 +14,20 @@ export function Carousel() {
 
     const fetchTestimonials = async () => {
         try {
-            const response = await axiosClient.get("api/testimonials?populate=avatar")
+            const response = await axiosClient.get("/api/testimonials?populate=avatar")
             const data = response.data
             // console.log(`ini data testimonal ${JSON.stringify(data)}`)
             const formattedTestimonials = data.map((item: any) => ({
                 id: item.id,
-                Name: item.Name,
-                Message: item.Message,
-                Role: item.Role,
+                name: item.name,
+                messages: item.messages,
+                role: item.role,
                 avatar: {
                     url: item.avatar?.url
                     ? `${baseURL}${item.avatar.url}`
                     : "/img/face/avatar.png",
                 }
             }))
-
 
             // console.log(`ini isi formattedTestimonials ${JSON.stringify(formattedTestimonials)}`)
             setTestimonials(formattedTestimonials)
@@ -93,27 +92,27 @@ export function Carousel() {
                         transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)`,
                     }}
                 >
-                    {testimonials.map((item, i) => (
+                    {testimonials.map((item) => (
                         <div
                             key={item.id}
                             id="carouselCard"
                             className={`flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-2`} // Gap restored with `px-2`
                         >
                             <div className="w-full flex flex-col gap-2 border border-gray-200 rounded-lg p-4 shadow-xl">
-                                <p className="line-clamp-4">{item.Message}</p>
+                                <p className="line-clamp-4">{item.messages}</p>
                                 <div className="flex gap-4">
                                     <div className="w-16 h-16 rounded-full overflow-hidden bg-slate-400">
                                         <img
                                             src={item.avatar.url}
-                                            alt={item.Name}
+                                            alt={item.name}
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
                                     <div className="flex flex-col gap-2 justify-center">
                                         <p className="font-bold text-lg text-[#007654]">
-                                            {item.Name}
+                                            {item.name}
                                         </p>
-                                        <p className="text-sm font-bold">{item.Role}</p>
+                                        <p className="text-sm font-bold">{item.role}</p>
                                     </div>
                                 </div>
                             </div>

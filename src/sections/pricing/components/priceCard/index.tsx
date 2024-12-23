@@ -6,7 +6,7 @@ import {
   StarIcon,
   BuildingOfficeIcon,
 } from "@heroicons/react/24/solid";
-import { PricingCardProps } from "./type";
+import { PricingCardProps } from "sections";
 
 export function PricingCard(props: PricingCardProps) {
   const { title, price, features } = props;

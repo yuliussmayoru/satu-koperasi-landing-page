@@ -5,7 +5,7 @@ import { PricingCard, PricingPlan, PricingResponse } from "sections";
 import axiosClient from "api/axiosClient";
 
 export function Pricing() {
-  const [activePlan, setActivePlan] = useState<keyof PricingResponse["data"]>("Monthly");
+  const [activePlan, setActivePlan] = useState<keyof PricingResponse["data"]>("monthly");
   const [plans, setPlans] = useState<PricingPlan[]>([]); // Ensure this is declared properly
   const [error, setError] = useState<string | null>(null);
 
@@ -55,7 +55,6 @@ export function Pricing() {
         console.error(err);
       }
     };
-
     fetchPricing();
   }, [activePlan]);
 
@@ -76,21 +75,21 @@ export function Pricing() {
         <div className="flex border border-[#007654] w-52 rounded-md">
           <button
             className={`p-2 w-1/2 ${
-              activePlan === "Monthly"
+              activePlan === "monthly"
                 ? "bg-[#007654] text-white"
                 : "bg-white text-[#007654]"
             } rounded-l-md`}
-            onClick={() => setActivePlan("Monthly")}
+            onClick={() => setActivePlan("monthly")}
           >
             MONTHLY
           </button>
           <button
             className={`p-2 w-1/2 ${
-              activePlan === "Annual"
+              activePlan === "annual"
                 ? "bg-[#007654] text-white"
                 : "bg-white text-[#007654]"
             } rounded-r-md`}
-            onClick={() => setActivePlan("Annual")}
+            onClick={() => setActivePlan("annual")}
           >
             ANNUAL
           </button>

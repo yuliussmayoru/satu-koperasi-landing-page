@@ -1,13 +1,14 @@
-import { Blog,
-        ContactUs,
-        Features,
-        Footer,
-        Hero,
-        NavBar,
-        Pricing,
-        ServicesSection,
-        Testiomnials
-      } from "sections";
+import {
+    Blog,
+    ContactUs,
+    Features,
+    Footer,
+    Hero,
+    NavBar,
+    Pricing,
+    ServicesSection,
+    Testimonials,
+} from "sections";
 
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
       <ServicesSection />
       <Features />
       <Pricing />
-      <Testiomnials />
+      <Testimonials />
       <Blog />
       <ContactUs />
       <Footer />

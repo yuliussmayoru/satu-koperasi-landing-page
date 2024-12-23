@@ -2,7 +2,7 @@ import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/16/solid";
 
 export function Footer() {
     return (
-        <div>
+        <div className="bottom-0">
             <div className="bg-[#007654] text-white p-8">
                 <div className="grid grid-cols-2 gap-8 lg:grid-cols-4 lg:pl-40 lg:pr-40 lg:mr-40 lg:ml-40">
                     <div className="col-span-2 lg:col-span-1">

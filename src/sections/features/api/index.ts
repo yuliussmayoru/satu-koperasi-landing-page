@@ -4,7 +4,7 @@ import { FeaturesData } from "../type";
 
 export async function fetchFeatures(): Promise<FeaturesData> {
     try {
-        const response = await axiosClient.get("api/features-managements");
+        const response = await axiosClient.get("/api/features-managements");
         const FeaturesData = response.data?.[0];
         return {
             featuresTitle: FeaturesData.featuresTitle,

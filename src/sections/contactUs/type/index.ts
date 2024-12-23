@@ -1,5 +1,5 @@
 export type ContactData = {
-    Address: string;
+    address: string;
     email: string;
-    Phone: string;
+    phone: string;
 }

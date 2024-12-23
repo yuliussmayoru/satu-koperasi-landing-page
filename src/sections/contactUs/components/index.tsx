@@ -5,7 +5,7 @@ import { ContactData, fetchContactData} from "sections";
 export async function ContactUs() {
     const contactData: ContactData = await fetchContactData()
     
-    const data = [contactData.Address, contactData.Phone, contactData.email]
+    const data = [contactData.address, contactData.phone, contactData.email]
     const getIcon = (index: any) => {
         switch (index) {
             case 0:
