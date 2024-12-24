@@ -1,4 +1,5 @@
 export type BlogCardData = {
+    documentId: string
     imgSrc: string
     alt: string
     blogTitle: string
@@ -7,4 +8,8 @@ export type BlogCardData = {
     authorImgSrc?: string
     blogDate: string
     slug: string
+}
+
+export type BlogDetailProps = {
+    params: {slug: string}
 }

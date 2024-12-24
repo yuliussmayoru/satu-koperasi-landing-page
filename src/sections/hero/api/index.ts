@@ -5,7 +5,7 @@ import { HeroData } from "../type"
 export async function fetchHero(): Promise<HeroData> {
     try {
         const response = await axiosClient.get("/api/hero")
-        console.log (`ini data hero ${JSON.stringify(response)}`)
+        // console.log (`ini data hero ${JSON.stringify(response)}`)
         const heroData = response.data
         return {
             title: heroData.title,

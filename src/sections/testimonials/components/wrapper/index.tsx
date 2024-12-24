@@ -8,7 +8,7 @@ async function fetchPartners(): Promise<Partner[]> {
     try {
       const response = await axiosClient.get("api/partners?populate=logoUrl") as PartnerResponse;
       const partnersData = response.data;
-      console.log (`ini isi dari partnersData ${JSON.stringify(partnersData)}`)
+      // console.log (`ini isi dari partnersData ${JSON.stringify(partnersData)}`)
   
       // Map the response to extract required fields
       return partnersData?.map((partner: any) => ({
