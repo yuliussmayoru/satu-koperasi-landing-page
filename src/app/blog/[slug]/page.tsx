@@ -1,4 +1,6 @@
 import {BlogDetailProps, fetchBlogCards, fetchBlogDetail} from "sections";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export default async function BlogDetailPage({ params } : BlogDetailProps) {
     const { slug } = await params
@@ -31,7 +33,9 @@ export default async function BlogDetailPage({ params } : BlogDetailProps) {
             />
             <h1 className="text-3xl font-bold my-4">{blog.title}</h1>
             <p className="text-gray-600">{blog.description}</p>
-            <div className="prose max-w-full">{blog.content}</div>
+            <div className="prose max-w-full">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{blog.content}</ReactMarkdown>
+            </div>
         </div>
     )
 }

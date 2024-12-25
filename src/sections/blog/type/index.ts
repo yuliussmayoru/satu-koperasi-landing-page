@@ -11,5 +11,5 @@ export type BlogCardData = {
 }
 
 export type BlogDetailProps = {
-    params: {slug: string}
+    params: Promise<{slug: string}>
 }
